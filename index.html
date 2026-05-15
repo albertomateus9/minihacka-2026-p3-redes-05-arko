@@ -16,6 +16,7 @@
       </a>
       <nav aria-label="Navegação principal">
         <a href="#recursos">Recursos</a>
+        <a href="#exemplos">Exemplos</a>
         <a href="#previa">Prévia</a>
         <a href="#equipe">Equipe</a>
       </nav>
@@ -43,7 +44,7 @@
       <section class="section" id="recursos">
         <div class="section-heading">
           <span>Projeto da equipe 05</span>
-          <h2>Uma proposta simples para virar protótipo navegável.</h2>
+          <h2>Exemplos para reservar espaços da escola sem choque de horário.</h2>
         </div>
         <div class="feature-grid">
           
@@ -65,17 +66,44 @@
         </div>
       </section>
 
+      <section class="section examples-section" id="exemplos">
+        <div class="section-heading">
+          <span>Exemplos de uso</span>
+          <h2>Dados fictícios para mostrar como a ideia funcionaria.</h2>
+        </div>
+        <div class="examples-grid">
+          
+        <article class="example-card">
+          <h3>Calendário da quadra</h3>
+          <p>Professor consulta sexta-feira à tarde e vê horários livres antes de pedir reserva.</p>
+        </article>
+        <article class="example-card">
+          <h3>Pedido de laboratório</h3>
+          <p>A solicitação registra turma, horário, sala e justificativa pedagógica.</p>
+        </article>
+        <article class="example-card">
+          <h3>Aprovação da coordenação</h3>
+          <p>Pedidos pendentes ficam visíveis para aprovação ou ajuste.</p>
+        </article>
+        </div>
+      </section>
+
       <section class="section preview-section" id="previa">
         <div class="preview-copy">
           <span>Prévia interativa</span>
-          <h2>Experimente uma parte da ideia.</h2>
-          <p data-response>Laboratório selecionado: terça, 10h, aguardando autorização.</p>
+          <h2>Troque o cenário e veja um exemplo da proposta.</h2>
+          <p data-demo-summary>Reserva fictícia para aula prática de cabeamento e testes de conectividade.</p>
           <div class="chip-row" aria-label="Opções da prévia">
             
-          <button class="chip is-active" type="button" data-response="Laboratório selecionado: terça, 10h, aguardando autorização.">Laboratório</button>
-          <button class="chip" type="button" data-response="Quadra selecionada: sexta, 15h, horário disponível.">Quadra</button>
-          <button class="chip" type="button" data-response="Auditório selecionado: quarta, 8h, precisa de aprovação.">Auditório</button>
+          <button class="chip is-active" type="button" data-scenario-title="Lab. Redes - terça 10h" data-scenario-summary="Reserva fictícia para aula prática de cabeamento e testes de conectividade." data-scenario-meta="Status: aguardando autorização" data-scenario-detail="A coordenação vê turma, responsável e justificativa antes de aprovar o uso do laboratório.">Laboratório</button>
+          <button class="chip" type="button" data-scenario-title="Quadra - sexta 15h" data-scenario-summary="Horário disponível para atividade esportiva da turma." data-scenario-meta="Status: livre para solicitação" data-scenario-detail="O calendário evita conflito mostrando que não existe outra reserva no mesmo intervalo.">Quadra</button>
+          <button class="chip" type="button" data-scenario-title="Auditório - quarta 8h" data-scenario-summary="Uso solicitado para apresentação de projetos estudantis." data-scenario-meta="Status: precisa de aprovação" data-scenario-detail="O pedido fica visível para professores e coordenação, reduzindo desencontro de informações.">Auditório</button>
           </div>
+          <article class="demo-panel" aria-live="polite">
+            <span data-demo-meta>Status: aguardando autorização</span>
+            <strong data-demo-title>Lab. Redes - terça 10h</strong>
+            <p data-demo-detail>A coordenação vê turma, responsável e justificativa antes de aprovar o uso do laboratório.</p>
+          </article>
           <button class="button button-primary" type="button" data-demo-action>Agendar espaço</button>
           <p class="counter" data-counter>Interações nesta visita: 0</p>
         </div>
@@ -112,7 +140,7 @@
         </article>
         <article class="member-card">
           <span>Designer</span>
-          <strong>A definir</strong>
+          <strong>Não informado no PDF</strong>
         </article>
         <article class="member-card">
           <span>Construtor(a) HTML</span>
