@@ -1,200 +1,271 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arko | Agendamento de Espaços Escolares</title>
-    <meta
-      name="description"
-      content="Arko organiza pedidos e autorizações para salas, laboratórios, quadras e outros espaços da escola."
-    />
-    <meta name="theme-color" content="#12355b" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arko Security | Cibersegurança EETEPA</title>
+    <meta name="description" content="Central de cibersegurança escolar com verificador de força de senhas e analisador de phishing para a EETEPA Vilhena Alves." />
+    <meta name="theme-color" content="#0d0e15" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <body style="--primary: #00ff66; --secondary: #3b82f6; --accent: #f59e0b; --bg-color: #08090e;">
+    
+    <!-- Glow backgrounds -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
 
-    <header class="site-header" id="inicio">
-      <nav class="topbar" aria-label="Navegação principal">
-        <a class="wordmark" href="#inicio">Arko</a>
-        <div class="nav-links">
-          <a href="#como-funciona">Como funciona</a>
-          <a href="#agenda">Agenda</a>
-          <a href="#equipe">Equipe</a>
-        </div>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Arko Security">
+        <span class="brand-mark">05</span>
+        <span>Arko Security<span class="brand-dot">_</span></span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="#analisador">Senha Segura</a>
+        <a href="#phishing">Simulador Phishing</a>
+        <a href="#dicas">Cartilha</a>
+        <a href="#equipe">Equipe</a>
       </nav>
+    </header>
 
-      <div class="hero">
-        <div class="brand-lockup">
-          <figure class="logo-frame">
-            <img
-              class="school-logo"
-              src="assets/logo-eetepa.png"
-              alt="Logo da EETEPA Vilhena Alves de Belém do Pará"
-            />
-          </figure>
-
-          <div class="hero-copy">
-            <p class="eyebrow">EETEPA Belém do Pará</p>
-            <h1>Arko</h1>
-            <p class="lead">
-              Agendamento de espaços escolares para professores, coordenação e
-              gestão acompanharem cada pedido sem conflito de horário.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#agenda">Ver agenda</a>
-              <a class="button button-secondary" href="#como-funciona">Entender o fluxo</a>
+    <main>
+      
+      <!-- HERO SECTION -->
+      <section class="hero" id="inicio">
+        <div class="hero-copy">
+          <span class="badge-tag">Proteção Escolar</span>
+          <h1>Proteja seus dados nos laboratórios da EETEPA</h1>
+          <p class="tagline">Aprenda a criar senhas fortes e identifique e-mails maliciosos antes de clicar.</p>
+          <p class="hero-description">O **Arko Security** é uma central interativa de conscientização em segurança da informação desenvolvida para os laboratórios de informática da EETEPA Vilhena Alves.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#analisador">Testar uma Senha</a>
+            <a class="button button-secondary" href="#phishing">Analisar Phishing</a>
+          </div>
+          <ol class="step-list" aria-label="Níveis de proteção">
+            <li>
+              <span class="step-num">01</span>
+              <div>
+                <strong>Fortaleça Senhas</strong>
+                <span>Evite usar dados fáceis ou datas</span>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">02</span>
+              <div>
+                <strong>Desconfie de Links</strong>
+                <span>Verifique remetentes e domínios</span>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">03</span>
+              <div>
+                <strong>Navegue Seguro</strong>
+                <span>Mantenha as contas da escola protegidas</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="hero-media-wrapper">
+          <div class="hero-media">
+            <!-- Security Terminal Preview Widget -->
+            <div class="visual-security-preview glass-panel">
+              <div class="preview-card-header">
+                <span>Console Arko v1.0</span>
+                <strong class="mode-indicator pulse">SISTEMA SEGURO</strong>
+              </div>
+              <div class="terminal-content">
+                <p class="term-line"><span class="term-prompt">$</span> arko-scan --network</p>
+                <p class="term-line success">IP local: 192.168.10.45</p>
+                <p class="term-line success">Status: Firewall ativo</p>
+                <p class="term-line warning">Dica: Nunca salve senhas no navegador público!</p>
+              </div>
             </div>
           </div>
         </div>
-
-        <section class="hero-summary" aria-labelledby="resumo-arko">
-          <p class="summary-kicker">Reserva em três passos</p>
-          <h2 id="resumo-arko">Organização clara para cada ambiente da escola.</h2>
-          <ol>
-            <li>Escolher dia, horário e espaço.</li>
-            <li>Registrar o pedido com responsavel.</li>
-            <li>Acompanhar a decisão da coordenação.</li>
-          </ol>
-        </section>
-      </div>
-    </header>
-
-    <main id="conteudo">
-      <section class="flow-band" id="como-funciona" aria-labelledby="fluxo-title">
-        <div class="section-heading">
-          <p>Como funciona</p>
-          <h2 id="fluxo-title">O Arko transforma combinados soltos em uma agenda consultável.</h2>
-        </div>
-
-        <div class="flow-grid">
-          <article>
-            <span>01</span>
-            <h3>Consulta</h3>
-            <p>Professores conferem a disponibilidade de salas, laboratórios e quadras.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Solicitação</h3>
-            <p>Data, horário, turma e justificativa ficam registrados antes da reserva.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Autorização</h3>
-            <p>Coordenação e gestão enxergam os pedidos e evitam uso duplicado.</p>
-          </article>
-        </div>
       </section>
 
-      <section class="benefits" aria-labelledby="beneficios-title">
+      <!-- PASSWORD STRENGTH ANALYZER SECTION -->
+      <section class="section analyzer-section" id="analisador">
         <div class="section-heading">
-          <p>Benefícios</p>
-          <h2 id="beneficios-title">Visibilidade para quem reserva e para quem organiza.</h2>
+          <span>Análise de Vulnerabilidade</span>
+          <h2>Analisador de Senhas Escolares</h2>
+          <p>Digite uma senha abaixo para verificar sua robustez e o tempo estimado que um hacker levaria para quebrá-la.</p>
         </div>
 
-        <div class="benefit-columns">
-          <article>
-            <h3>Para a escola</h3>
-            <ul>
-              <li>Reduz conflitos entre turmas e pedidos no mesmo horário.</li>
-              <li>Centraliza a aprovação de ambientes com histórico de uso.</li>
-              <li>Ajuda a planejar aulas práticas com mais antecedência.</li>
+        <div class="analyzer-grid">
+          <div class="analyzer-card glass-panel">
+            <h3>Medidor de Força</h3>
+            <div class="form-group password-group">
+              <label for="password-input">Digite uma Senha para Testar</label>
+              <div class="password-input-wrapper">
+                <input type="password" id="password-input" placeholder="Sua senha de teste aqui..." />
+                <button class="toggle-password" id="btn-toggle-password" type="button" aria-label="Mostrar senha">👁️</button>
+              </div>
+            </div>
+
+            <!-- Strength Bar -->
+            <div class="strength-bar-container">
+              <div class="strength-bar" id="strength-bar-fill"></div>
+            </div>
+            
+            <div class="strength-metrics">
+              <span class="strength-label">Força: <strong id="strength-text" class="status-weak">Nula</strong></span>
+              <span class="time-label">Tempo para quebrar: <strong id="crack-time">Imediato</strong></span>
+            </div>
+
+            <!-- Feedback Checklist -->
+            <ul class="strength-checklist" id="strength-checklist">
+              <li id="chk-length" class="fail">Mínimo de 8 caracteres</li>
+              <li id="chk-upper" class="fail">Pelo menos uma letra maiúscula</li>
+              <li id="chk-lower" class="fail">Pelo menos uma letra minúscula</li>
+              <li id="chk-number" class="fail">Pelo menos um número</li>
+              <li id="chk-special" class="fail">Pelo menos um caractere especial (!@#$)</li>
             </ul>
-          </article>
-          <article>
-            <h3>Para cada perfil</h3>
-            <ul>
-              <li>Professores solicitam espaços com contexto pedagógico.</li>
-              <li>Coordenação acompanha pendências e decisões.</li>
-              <li>Gestão observa a ocupação dos ambientes da escola.</li>
+          </div>
+
+          <div class="analyzer-info glass-panel">
+            <h3>Dicas de Ouro para Senhas da EETEPA</h3>
+            <ul class="security-rules">
+              <li>
+                <div class="rule-bullet">🔑</div>
+                <div><strong>Não use sua Matrícula:</strong> A matrícula escolar é pública e fácil de descobrir. Nunca use-a como senha.</div>
+              </li>
+              <li>
+                <div class="rule-bullet">💡</div>
+                <div><strong>Use Senhas em Frase:</strong> Em vez de <code>P@ssw0rd</code>, prefira frases longas como <code>LivroRedesAzulEstante3</code>. São mais fáceis de lembrar e incrivelmente difíceis de quebrar.</div>
+              </li>
+              <li>
+                <div class="rule-bullet">🚫</div>
+                <div><strong>Nunca Compartilhe:</strong> Nem mesmo com seus colegas de equipe de laboratório. Cada aluno deve usar seu próprio login.</div>
+              </li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PHISHING SIMULATOR SECTION -->
+      <section class="section phishing-section" id="phishing">
+        <div class="section-heading">
+          <span>Engenharia Social</span>
+          <h2>Detector de Phishing Escolar</h2>
+          <p>Analise a simulação de e-mail abaixo. Clique nas áreas suspeitas para descobrir por que este e-mail é um golpe de Phishing direcionado aos alunos da EETEPA.</p>
+        </div>
+
+        <div class="phishing-grid">
+          <!-- Email Viewer -->
+          <div class="email-viewer glass-panel">
+            <div class="email-header">
+              <div class="email-row">
+                <span class="email-label">De:</span>
+                <span class="email-value suspect-target" data-tip="Domínio falso! O e-mail oficial da escola usa @eetepavilhena.pa.gov.br e não 'eetepas-suporte.com'.">suporte@eetepas-suporte.com <span class="badge-suspect">Suspeito</span></span>
+              </div>
+              <div class="email-row">
+                <span class="email-label">Para:</span>
+                <span class="email-value">aluno.redes@eetepa.pa.gov.br</span>
+              </div>
+              <div class="email-row">
+                <span class="email-label">Assunto:</span>
+                <span class="email-value bold suspect-target" data-tip="Uso de urgência extrema para induzir o pânico e o clique rápido.">URGENTE: Bloqueio imediato da sua conta estudantil! <span class="badge-suspect">Suspeito</span></span>
+              </div>
+            </div>
+            
+            <div class="email-body">
+              <p>Prezado Aluno,</p>
+              <p>Identificamos um acesso suspeito à sua conta do Portal Acadêmico da EETEPA Vilhena Alves a partir de um IP fora de Belém-PA.</p>
+              <p>Para evitar a suspensão do seu acesso aos laboratórios de redes e a perda dos seus relatórios de notas, você deve redefinir sua senha agora mesmo clicando no link abaixo:</p>
+              
+              <div class="email-action-link">
+                <a href="#phishing" class="suspect-target fake-link-btn" data-tip="O link aponta para um site externo 'painel-eetepa.temp-url.ru' em vez dos servidores do Estado do Pará!">
+                  👉 CLIQUE AQUI PARA VERIFICAR SUA CONTA ESTUDANTIL 👈
+                </a>
+              </div>
+              
+              <p>Se você não redefinir em até 2 horas, seu usuário será deletado permanentemente.</p>
+              <p>Atenciosamente,<br><strong>Administração de TI EETEPA</strong></p>
+            </div>
+          </div>
+
+          <!-- Explanation Panel -->
+          <div class="phishing-explanation glass-panel" id="phishing-tips-box">
+            <h3>Painel de Análise</h3>
+            <p id="analysis-instruction">Clique nas partes marcadas em <strong style="color: var(--accent);">vermelho</strong> no e-mail para analisar as falhas de segurança.</p>
+            <div class="tip-card" id="active-tip-card" style="display: none;">
+              <h4 id="tip-title">Ponto de Atenção</h4>
+              <p id="tip-desc"></p>
+            </div>
+            <div class="phishing-stats">
+              <button class="button button-primary" id="btn-reveal-all">Exibir Todos os Perigos</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARTILHA / DICAS SECTION -->
+      <section class="section tips-section" id="dicas">
+        <div class="section-heading">
+          <span>Manual de Boas Práticas</span>
+          <h2>Regras de Ouro de Segurança</h2>
+          <p>Diretrizes básicas de cibersegurança fundamentais para o uso dos laboratórios de Redes da EETEPA.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <span class="feature-index">01</span>
+            <h3>Cuidado com o Pendrive</h3>
+            <p>Sempre verifique pendrives com o antivírus instalado nos computadores da escola antes de abrir arquivos. Eles são vetores comuns de propagação de malware.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">02</span>
+            <h3>Deslogue Sempre</h3>
+            <p>Ao terminar a aula prática, certifique-se de fazer Logoff do Windows ou Ubuntu no laboratório. Deixar a sessão aberta permite que qualquer um acesse seus arquivos.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-index">03</span>
+            <h3>Verifique o cadeado HTTPS</h3>
+            <p>Antes de digitar suas credenciais no Portal do Aluno ou na plataforma Google Classroom, verifique se a URL possui HTTPS e se o domínio é autêntico.</p>
           </article>
         </div>
       </section>
 
-      <section class="schedule-band" id="agenda" aria-labelledby="agenda-title">
+      <!-- TEAM SECTION -->
+      <section class="section team-section" id="equipe">
         <div class="section-heading">
-          <p>Exemplo de agendamento</p>
-          <h2 id="agenda-title">Uma agenda simples deixa o status de cada reserva evidente.</h2>
+          <span>Integrantes</span>
+          <h2>Equipe de Desenvolvimento</h2>
+          <p>Alunos do 3º período de Redes da EETEPA Vilhena Alves responsáveis pelo desenvolvimento do Arko Security Suite.</p>
         </div>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Reservas ilustrativas exibidas pelo projeto Arko.</caption>
-            <thead>
-              <tr>
-                <th scope="col">Data</th>
-                <th scope="col">Espaço</th>
-                <th scope="col">Professor</th>
-                <th scope="col">Horário</th>
-                <th scope="col">Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>28/05/2026</td>
-                <td>Laboratório de Informática</td>
-                <td>Prof. Ana Silva</td>
-                <td>08:00 - 10:00</td>
-                <td><span class="status approved">Aprovado</span></td>
-              </tr>
-              <tr>
-                <td>29/05/2026</td>
-                <td>Quadra Poliesportiva</td>
-                <td>Prof. João Costa</td>
-                <td>10:30 - 12:00</td>
-                <td><span class="status pending">Pendente</span></td>
-              </tr>
-              <tr>
-                <td>30/05/2026</td>
-                <td>Biblioteca</td>
-                <td>Prof. Marina Torres</td>
-                <td>13:00 - 14:30</td>
-                <td><span class="status scheduled">Agendado</span></td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="team-grid">
+          <article class="member-card">
+            <img class="member-img" src="assets/member_anna.png" alt="Anna Sophia Frade" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="member-avatar-placeholder">AF</div>
+            <span>Gerente de Ideias</span>
+            <strong>Anna Sophia Frade</strong>
+          </article>
+          <article class="member-card">
+            <img class="member-img" src="assets/member_luke.png" alt="Luke Oliveira" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="member-avatar-placeholder">LO</div>
+            <span>Construtor HTML</span>
+            <strong>Luke Oliveira</strong>
+          </article>
+          <article class="member-card">
+            <img class="member-img" src="assets/member_maria.png" alt="Maria Clara Santos" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="member-avatar-placeholder">MS</div>
+            <span>Estilista CSS</span>
+            <strong>Maria Clara Santos</strong>
+          </article>
         </div>
-      </section>
-
-      <section class="mission-team" aria-label="Missao e creditos">
-        <article class="mission">
-          <p>Missão</p>
-          <h2>Facilitar a comunicação entre professores e coordenação.</h2>
-          <p>
-            O Arko foi pensado para otimizar o uso dos espaços escolares e
-            tornar a organização mais transparente para toda a comunidade.
-          </p>
-        </article>
-
-        <article class="team" id="equipe">
-          <p>MiniHacka 2026-1</p>
-          <h2>Equipe 05</h2>
-          <dl>
-            <div>
-              <dt>Gerente de Ideias</dt>
-              <dd>Anna Sophia Frade</dd>
-            </div>
-            <div>
-              <dt>Designer</dt>
-              <dd>Não informado no PDF</dd>
-            </div>
-            <div>
-              <dt>Construtor HTML</dt>
-              <dd>Luke Oliveira</dd>
-            </div>
-            <div>
-              <dt>Estilista CSS</dt>
-              <dd>Maria Clara Santos</dd>
-            </div>
-          </dl>
-        </article>
       </section>
     </main>
 
     <footer>
-      <p>Projeto da turma do 3º período de Redes de Computadores Integrado.</p>
-      <a href="#inicio">Voltar ao topo</a>
+      <p>&copy; 2026 MiniHacka P3 Redes - EETEPA Vilhena Alves. Todos os direitos reservados.</p>
+      <a href="#inicio">Voltar ao topo &uarr;</a>
     </footer>
+
+    <script src="script.js" defer></script>
   </body>
 </html>
