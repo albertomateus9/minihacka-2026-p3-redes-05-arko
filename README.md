@@ -9,9 +9,9 @@ A página publicada parte da entrega da equipe e apresenta a proposta do Arko pa
 ## Equipe
 
 - **Gerente de Ideias:** Anna Sophia Frade
-- **Designer:** Não informado no PDF
-- **Construtor HTML:** Luke Oliveira
-- **Estilista CSS:** Maria Clara Santos
+- **Designer:** Luke Oliveira
+- **Construtor HTML:** Maria Clara Santos
+- **Estilista CSS:** Julia Oliveira
 
 ## Publicação
 
