@@ -37,6 +37,15 @@ document.addEventListener("DOMContentLoaded", () => {
       purpose: "Apresentação de Projetos Web",
       approved: true
     },
+    {
+      id: "res-7",
+      space: "Sala de Aula 10",
+      prof: "Prof. Marcos Souza",
+      day: "Quinta-feira",
+      shift: "Manhã",
+      purpose: "Aula Teórica de Protocolos de Rede",
+      approved: true
+    },
     // Initial Pending Requests
     {
       id: "res-5",
@@ -54,6 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
       day: "Quinta-feira",
       shift: "Tarde",
       purpose: "Exibição de Documentário de Redes",
+      approved: false
+    },
+    {
+      id: "res-8",
+      space: "Laboratório de Informática (Lab 2)",
+      prof: "Profa. Ana Carolina",
+      day: "Quarta-feira",
+      shift: "Tarde",
+      purpose: "Lógica de Programação com Portugol",
       approved: false
     }
   ];
@@ -295,9 +313,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Redes Lab 1, Auditório, Quadra, Sala Multimídia
     const environments = [
       { name: "Lab 1 (Redes)", key: "Laboratório de Redes (Lab 1)" },
+      { name: "Lab 2 (Info)", key: "Laboratório de Informática (Lab 2)" },
       { name: "Auditório", key: "Auditório Principal" },
       { name: "Quadra", key: "Quadra Poliesportiva" },
-      { name: "Lab 2 (Dev)", key: "Sala Multimídia" }
+      { name: "Sala Multimídia", key: "Sala Multimídia" },
+      { name: "Sala de Aula 10", key: "Sala de Aula 10" }
     ];
 
     const terminalContent = document.querySelector(".terminal-content");

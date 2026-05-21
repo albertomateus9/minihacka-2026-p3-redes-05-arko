@@ -783,7 +783,7 @@ select option {
 /* Team Grid & Member Cards */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
   justify-content: center;
 }

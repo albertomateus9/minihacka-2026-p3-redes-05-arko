@@ -40,8 +40,8 @@
         <div class="hero-copy">
           <span class="badge-tag">Organização Escolar</span>
           <h1>Agendamento Inteligente de Espaços na EETEPA</h1>
-          <p class="tagline">Visualize a disponibilidade e reserve laboratórios, quadras e auditórios sem conflitos de horários.</p>
-          <p class="hero-description">O **Arko** é uma plataforma criada para facilitar o planejamento de aulas práticas e eventos. Professores solicitam reservas e a coordenação analisa de forma rápida e centralizada.</p>
+          <p class="tagline">Visualize a disponibilidade e reserve salas, quadras, auditórios e laboratórios sem conflitos de horários.</p>
+          <p class="hero-description">O <strong>Arko</strong> é um site criado para facilitar a organização e o uso dos espaços públicos da escola, como salas, quadras, auditórios e laboratórios. Ao entrar na plataforma, os professores podem visualizar um calendário com todos os horários disponíveis e fazer o agendamento do ambiente desejado de forma rápida e prática. No sistema, o professor escolhe o dia, horário e local que precisa utilizar, e essa informação fica visível para os outros professores, evitando conflitos de horários. Além disso, todos os pedidos passam por uma etapa de autorização, que é feita diretamente pela coordenação dentro do próprio site.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#reserva">Reservar um Espaço</a>
             <a class="button button-secondary" href="#calendario">Ver Calendário</a>
@@ -100,9 +100,11 @@
         <div class="filter-bar">
           <button class="filter-btn active" data-space="todos">Todos</button>
           <button class="filter-btn" data-space="Laboratório de Redes (Lab 1)">Lab Redes 1</button>
+          <button class="filter-btn" data-space="Laboratório de Informática (Lab 2)">Lab Info 2</button>
           <button class="filter-btn" data-space="Auditório Principal">Auditório</button>
           <button class="filter-btn" data-space="Quadra Poliesportiva">Quadra</button>
           <button class="filter-btn" data-space="Sala Multimídia">Sala Multimídia</button>
+          <button class="filter-btn" data-space="Sala de Aula 10">Sala de Aula 10</button>
         </div>
 
         <div class="calendar-display glass-panel">
@@ -145,9 +147,11 @@
                 <label for="space-select">Ambiente Desejado</label>
                 <select id="space-select" required>
                   <option value="Laboratório de Redes (Lab 1)">Laboratório de Redes (Lab 1)</option>
+                  <option value="Laboratório de Informática (Lab 2)">Laboratório de Informática (Lab 2)</option>
                   <option value="Auditório Principal">Auditório Principal</option>
                   <option value="Quadra Poliesportiva">Quadra Poliesportiva</option>
                   <option value="Sala Multimídia">Sala Multimídia</option>
+                  <option value="Sala de Aula 10">Sala de Aula 10</option>
                 </select>
               </div>
               <div class="form-grid">
@@ -239,14 +243,20 @@
           <article class="member-card">
             <img class="member-img" src="assets/member_luke.png" alt="Luke Oliveira" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
             <div class="member-avatar-placeholder">LO</div>
-            <span>Construtor HTML</span>
+            <span>Designer</span>
             <strong>Luke Oliveira</strong>
           </article>
           <article class="member-card">
             <img class="member-img" src="assets/member_maria.png" alt="Maria Clara Santos" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
             <div class="member-avatar-placeholder">MS</div>
-            <span>Estilista CSS</span>
+            <span>Construtora HTML</span>
             <strong>Maria Clara Santos</strong>
+          </article>
+          <article class="member-card">
+            <img class="member-img" src="assets/member_julia.png" alt="Julia Oliveira" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';" />
+            <div class="member-avatar-placeholder">JO</div>
+            <span>Estilista CSS</span>
+            <strong>Julia Oliveira</strong>
           </article>
         </div>
       </section>
