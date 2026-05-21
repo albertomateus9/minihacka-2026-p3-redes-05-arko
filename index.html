@@ -3,162 +3,198 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Arko | MiniHacka P3 Redes</title>
-    <meta name="description" content="Um site para visualizar disponibilidade e solicitar salas, quadras, auditórios e laboratórios, com etapa de autorização pela coordenação." />
-    <meta name="theme-color" content="#145c9e" />
+    <title>Arko | Agendamento de Espaços Escolares</title>
+    <meta
+      name="description"
+      content="Arko organiza pedidos e autorizações para salas, laboratórios, quadras e outros espaços da escola."
+    />
+    <meta name="theme-color" content="#12355b" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body style="--primary: #145c9e; --secondary: #17a673; --accent: #f2c94c;">
-    <header class="site-header">
-      <a class="brand" href="#inicio" aria-label="Arko">
-        <span class="brand-mark">05</span>
-        <span>Arko</span>
-      </a>
-      <nav aria-label="Navegação principal">
-        <a href="#recursos">Recursos</a>
-        <a href="#exemplos">Exemplos</a>
-        <a href="#previa">Prévia</a>
-        <a href="#equipe">Equipe</a>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="site-header" id="inicio">
+      <nav class="topbar" aria-label="Navegação principal">
+        <a class="wordmark" href="#inicio">Arko</a>
+        <div class="nav-links">
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#agenda">Agenda</a>
+          <a href="#equipe">Equipe</a>
+        </div>
       </nav>
+
+      <div class="hero">
+        <div class="brand-lockup">
+          <figure class="logo-frame">
+            <img
+              class="school-logo"
+              src="assets/logo-eetepa.png"
+              alt="Logo da EETEPA Vilhena Alves de Belém do Pará"
+            />
+          </figure>
+
+          <div class="hero-copy">
+            <p class="eyebrow">EETEPA Belém do Pará</p>
+            <h1>Arko</h1>
+            <p class="lead">
+              Agendamento de espaços escolares para professores, coordenação e
+              gestão acompanharem cada pedido sem conflito de horário.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#agenda">Ver agenda</a>
+              <a class="button button-secondary" href="#como-funciona">Entender o fluxo</a>
+            </div>
+          </div>
+        </div>
+
+        <section class="hero-summary" aria-labelledby="resumo-arko">
+          <p class="summary-kicker">Reserva em três passos</p>
+          <h2 id="resumo-arko">Organização clara para cada ambiente da escola.</h2>
+          <ol>
+            <li>Escolher dia, horário e espaço.</li>
+            <li>Registrar o pedido com responsavel.</li>
+            <li>Acompanhar a decisão da coordenação.</li>
+          </ol>
+        </section>
+      </div>
     </header>
 
-    <main>
-      <section class="hero" id="inicio">
-        <div class="hero-copy">
-          <h1>Arko</h1>
-          <p class="tagline">Agendamento de espaços escolares sem conflito de horário.</p>
-          <p>Um site para visualizar disponibilidade e solicitar salas, quadras, auditórios e laboratórios, com etapa de autorização pela coordenação.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#previa">Agendar espaço</a>
-            <a class="button button-secondary" href="#equipe">Conhecer equipe</a>
-          </div>
-          <ol class="step-list" aria-label="Fluxo principal">
-            <li>Ver calendário</li><li>Solicitar local</li><li>Aguardar autorização</li>
-          </ol>
-        </div>
-        <div class="hero-media" aria-label="Visual do projeto">
-          <img src="assets/visual.svg" alt="Prévia visual do site Arko" />
-        </div>
-      </section>
-
-      <section class="section" id="recursos">
+    <main id="conteudo">
+      <section class="flow-band" id="como-funciona" aria-labelledby="fluxo-title">
         <div class="section-heading">
-          <span>Projeto da equipe 05</span>
-          <h2>Exemplos para reservar espaços da escola sem choque de horário.</h2>
+          <p>Como funciona</p>
+          <h2 id="fluxo-title">O Arko transforma combinados soltos em uma agenda consultável.</h2>
         </div>
-        <div class="feature-grid">
-          
-        <article class="feature-card">
-          <span class="feature-index">01</span>
-          <h3>Calendário de espaços</h3>
-          <p>Professores visualizam horários livres antes de solicitar o ambiente.</p>
-        </article>
-        <article class="feature-card">
-          <span class="feature-index">02</span>
-          <h3>Solicitação guiada</h3>
-          <p>Dia, horário e local ficam registrados de forma clara.</p>
-        </article>
-        <article class="feature-card">
-          <span class="feature-index">03</span>
-          <h3>Autorização</h3>
-          <p>A coordenação aprova os pedidos dentro do próprio site.</p>
-        </article>
+
+        <div class="flow-grid">
+          <article>
+            <span>01</span>
+            <h3>Consulta</h3>
+            <p>Professores conferem a disponibilidade de salas, laboratórios e quadras.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Solicitação</h3>
+            <p>Data, horário, turma e justificativa ficam registrados antes da reserva.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Autorização</h3>
+            <p>Coordenação e gestão enxergam os pedidos e evitam uso duplicado.</p>
+          </article>
         </div>
       </section>
 
-      <section class="section examples-section" id="exemplos">
+      <section class="benefits" aria-labelledby="beneficios-title">
         <div class="section-heading">
-          <span>Exemplos de uso</span>
-          <h2>Dados fictícios para mostrar como a ideia funcionaria.</h2>
+          <p>Benefícios</p>
+          <h2 id="beneficios-title">Visibilidade para quem reserva e para quem organiza.</h2>
         </div>
-        <div class="examples-grid">
-          
-        <article class="example-card">
-          <h3>Calendário da quadra</h3>
-          <p>Professor consulta sexta-feira à tarde e vê horários livres antes de pedir reserva.</p>
-        </article>
-        <article class="example-card">
-          <h3>Pedido de laboratório</h3>
-          <p>A solicitação registra turma, horário, sala e justificativa pedagógica.</p>
-        </article>
-        <article class="example-card">
-          <h3>Aprovação da coordenação</h3>
-          <p>Pedidos pendentes ficam visíveis para aprovação ou ajuste.</p>
-        </article>
-        </div>
-      </section>
 
-      <section class="section preview-section" id="previa">
-        <div class="preview-copy">
-          <span>Prévia interativa</span>
-          <h2>Troque o cenário e veja um exemplo da proposta.</h2>
-          <p data-demo-summary>Reserva fictícia para aula prática de cabeamento e testes de conectividade.</p>
-          <div class="chip-row" aria-label="Opções da prévia">
-            
-          <button class="chip is-active" type="button" data-scenario-title="Lab. Redes - terça 10h" data-scenario-summary="Reserva fictícia para aula prática de cabeamento e testes de conectividade." data-scenario-meta="Status: aguardando autorização" data-scenario-detail="A coordenação vê turma, responsável e justificativa antes de aprovar o uso do laboratório.">Laboratório</button>
-          <button class="chip" type="button" data-scenario-title="Quadra - sexta 15h" data-scenario-summary="Horário disponível para atividade esportiva da turma." data-scenario-meta="Status: livre para solicitação" data-scenario-detail="O calendário evita conflito mostrando que não existe outra reserva no mesmo intervalo.">Quadra</button>
-          <button class="chip" type="button" data-scenario-title="Auditório - quarta 8h" data-scenario-summary="Uso solicitado para apresentação de projetos estudantis." data-scenario-meta="Status: precisa de aprovação" data-scenario-detail="O pedido fica visível para professores e coordenação, reduzindo desencontro de informações.">Auditório</button>
-          </div>
-          <article class="demo-panel" aria-live="polite">
-            <span data-demo-meta>Status: aguardando autorização</span>
-            <strong data-demo-title>Lab. Redes - terça 10h</strong>
-            <p data-demo-detail>A coordenação vê turma, responsável e justificativa antes de aprovar o uso do laboratório.</p>
+        <div class="benefit-columns">
+          <article>
+            <h3>Para a escola</h3>
+            <ul>
+              <li>Reduz conflitos entre turmas e pedidos no mesmo horário.</li>
+              <li>Centraliza a aprovação de ambientes com histórico de uso.</li>
+              <li>Ajuda a planejar aulas práticas com mais antecedência.</li>
+            </ul>
           </article>
-          <button class="button button-primary" type="button" data-demo-action>Agendar espaço</button>
-          <p class="counter" data-counter>Interações nesta visita: 0</p>
-        </div>
-        <div class="metric-grid">
-          
-          <article class="metric-card">
-            <span>Disponíveis</span>
-            <strong>12 horários</strong>
-            <p>Espaços livres esta semana.</p>
-          </article>
-          <article class="metric-card">
-            <span>Pendentes</span>
-            <strong>3 pedidos</strong>
-            <p>Aguardando coordenação.</p>
-          </article>
-          <article class="metric-card">
-            <span>Confirmados</span>
-            <strong>8 reservas</strong>
-            <p>Sem conflito no calendário.</p>
+          <article>
+            <h3>Para cada perfil</h3>
+            <ul>
+              <li>Professores solicitam espaços com contexto pedagógico.</li>
+              <li>Coordenação acompanha pendências e decisões.</li>
+              <li>Gestão observa a ocupação dos ambientes da escola.</li>
+            </ul>
           </article>
         </div>
       </section>
 
-      <section class="section team-section" id="equipe">
+      <section class="schedule-band" id="agenda" aria-labelledby="agenda-title">
         <div class="section-heading">
-          <span>Integrantes</span>
-          <h2>Funções da equipe no desenvolvimento.</h2>
+          <p>Exemplo de agendamento</p>
+          <h2 id="agenda-title">Uma agenda simples deixa o status de cada reserva evidente.</h2>
         </div>
-        <div class="team-grid">
-          
-        <article class="member-card">
-          <span>Gerente de Ideias</span>
-          <strong>Anna Sophia Frade</strong>
-        </article>
-        <article class="member-card">
-          <span>Designer</span>
-          <strong>Não informado no PDF</strong>
-        </article>
-        <article class="member-card">
-          <span>Construtor(a) HTML</span>
-          <strong>Luke Oliveira</strong>
-        </article>
-        <article class="member-card">
-          <span>Estilista CSS</span>
-          <strong>Maria Clara Santos</strong>
-        </article>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Reservas ilustrativas exibidas pelo projeto Arko.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Espaço</th>
+                <th scope="col">Professor</th>
+                <th scope="col">Horário</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>28/05/2026</td>
+                <td>Laboratório de Informática</td>
+                <td>Prof. Ana Silva</td>
+                <td>08:00 - 10:00</td>
+                <td><span class="status approved">Aprovado</span></td>
+              </tr>
+              <tr>
+                <td>29/05/2026</td>
+                <td>Quadra Poliesportiva</td>
+                <td>Prof. João Costa</td>
+                <td>10:30 - 12:00</td>
+                <td><span class="status pending">Pendente</span></td>
+              </tr>
+              <tr>
+                <td>30/05/2026</td>
+                <td>Biblioteca</td>
+                <td>Prof. Marina Torres</td>
+                <td>13:00 - 14:30</td>
+                <td><span class="status scheduled">Agendado</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </section>
+
+      <section class="mission-team" aria-label="Missao e creditos">
+        <article class="mission">
+          <p>Missão</p>
+          <h2>Facilitar a comunicação entre professores e coordenação.</h2>
+          <p>
+            O Arko foi pensado para otimizar o uso dos espaços escolares e
+            tornar a organização mais transparente para toda a comunidade.
+          </p>
+        </article>
+
+        <article class="team" id="equipe">
+          <p>MiniHacka 2026-1</p>
+          <h2>Equipe 05</h2>
+          <dl>
+            <div>
+              <dt>Gerente de Ideias</dt>
+              <dd>Anna Sophia Frade</dd>
+            </div>
+            <div>
+              <dt>Designer</dt>
+              <dd>Não informado no PDF</dd>
+            </div>
+            <div>
+              <dt>Construtor HTML</dt>
+              <dd>Luke Oliveira</dd>
+            </div>
+            <div>
+              <dt>Estilista CSS</dt>
+              <dd>Maria Clara Santos</dd>
+            </div>
+          </dl>
+        </article>
       </section>
     </main>
 
     <footer>
-      <p>MiniHacka 2026-1 - 3º período de Redes de Computadores (Integrado).</p>
+      <p>Projeto da turma do 3º período de Redes de Computadores Integrado.</p>
       <a href="#inicio">Voltar ao topo</a>
     </footer>
-
-    <script src="script.js" defer></script>
   </body>
 </html>
