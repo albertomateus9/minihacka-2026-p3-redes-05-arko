@@ -1,163 +1,353 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Password Strength Meter ---
-  const passwordInput = document.getElementById("password-input");
-  const btnTogglePassword = document.getElementById("btn-toggle-password");
-  const strengthBar = document.getElementById("strength-bar-fill");
-  const strengthText = document.getElementById("strength-text");
-  const crackTimeText = document.getElementById("crack-time");
-
-  const chkLength = document.getElementById("chk-length");
-  const chkUpper = document.getElementById("chk-upper");
-  const chkLower = document.getElementById("chk-lower");
-  const chkNumber = document.getElementById("chk-number");
-  const chkSpecial = document.getElementById("chk-special");
-
-  // Show/Hide Password Toggle
-  if (btnTogglePassword && passwordInput) {
-    btnTogglePassword.addEventListener("click", () => {
-      if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        btnTogglePassword.textContent = "🙈";
-      } else {
-        passwordInput.type = "password";
-        btnTogglePassword.textContent = "👁️";
-      }
-    });
-  }
-
-  // Password Analysis Function
-  if (passwordInput) {
-    passwordInput.addEventListener("input", () => {
-      const val = passwordInput.value;
-      if (!val) {
-        resetPasswordMetrics();
-        return;
-      }
-
-      // Check conditions
-      const hasLength = val.length >= 8;
-      const hasUpper = /[A-Z]/.test(val);
-      const hasLower = /[a-z]/.test(val);
-      const hasNumber = /[0-9]/.test(val);
-      const hasSpecial = /[^A-Za-z0-9]/.test(val);
-
-      // Toggle checkbox classes
-      updateCheck(chkLength, hasLength);
-      updateCheck(chkUpper, hasUpper);
-      updateCheck(chkLower, hasLower);
-      updateCheck(chkNumber, hasNumber);
-      updateCheck(chkSpecial, hasSpecial);
-
-      // Calculate score
-      let score = 0;
-      if (hasLength) score++;
-      if (hasUpper) score++;
-      if (hasLower) score++;
-      if (hasNumber) score++;
-      if (hasSpecial) score++;
-
-      // Length bonus
-      if (val.length >= 14 && score > 0) score++;
-
-      // Update progress bar
-      let pct = (score / 6) * 100;
-      strengthBar.style.width = `${pct}%`;
-
-      // Update labels based on score
-      if (score <= 1) {
-        strengthBar.className = "strength-bar bar-weak";
-        strengthText.textContent = "Trivial (Fraca)";
-        strengthText.className = "status-weak";
-        crackTimeText.textContent = "Alguns segundos / Imediato";
-      } else if (score <= 3) {
-        strengthBar.className = "strength-bar bar-medium";
-        strengthText.textContent = "Média";
-        strengthText.className = "status-medium";
-        crackTimeText.textContent = "Alguns minutos a horas";
-      } else if (score <= 5) {
-        strengthBar.className = "strength-bar bar-strong";
-        strengthText.textContent = "Forte";
-        strengthText.className = "status-strong";
-        crackTimeText.textContent = "Vários meses";
-      } else {
-        strengthBar.className = "strength-bar bar-ultimate";
-        strengthText.textContent = "Altamente Segura!";
-        strengthText.className = "status-ultimate";
-        crackTimeText.textContent = "Séculos de processamento";
-      }
-    });
-  }
-
-  function updateCheck(element, isPassed) {
-    if (!element) return;
-    if (isPassed) {
-      element.className = "success";
-    } else {
-      element.className = "fail";
+  // Initial state memory for reservations
+  let reservations = [
+    {
+      id: "res-1",
+      space: "Laboratório de Redes (Lab 1)",
+      prof: "Prof. Alberto Mateus",
+      day: "Segunda-feira",
+      shift: "Tarde",
+      purpose: "Configuração de Roteadores CISCO",
+      approved: true
+    },
+    {
+      id: "res-2",
+      space: "Auditório Principal",
+      prof: "Profa. Gabriela Costa",
+      day: "Quarta-feira",
+      shift: "Manhã",
+      purpose: "Palestra de Integração Hackathon",
+      approved: true
+    },
+    {
+      id: "res-3",
+      space: "Quadra Poliesportiva",
+      prof: "Prof. Ítalo Garcia",
+      day: "Sexta-feira",
+      shift: "Manhã",
+      purpose: "Treinamento de Jogos Escolares",
+      approved: true
+    },
+    {
+      id: "res-4",
+      space: "Sala Multimídia",
+      prof: "Profa. Julia Oliveira",
+      day: "Terça-feira",
+      shift: "Noite",
+      purpose: "Apresentação de Projetos Web",
+      approved: true
+    },
+    // Initial Pending Requests
+    {
+      id: "res-5",
+      space: "Laboratório de Redes (Lab 1)",
+      prof: "Prof. Samuel Augusto",
+      day: "Terça-feira",
+      shift: "Manhã",
+      purpose: "Aula de Cabeamento Estruturado",
+      approved: false
+    },
+    {
+      id: "res-6",
+      space: "Sala Multimídia",
+      prof: "Profa. Mariana Stefany",
+      day: "Quinta-feira",
+      shift: "Tarde",
+      purpose: "Exibição de Documentário de Redes",
+      approved: false
     }
-  }
+  ];
 
-  function resetPasswordMetrics() {
-    strengthBar.style.width = "0%";
-    strengthBar.className = "strength-bar";
-    strengthText.textContent = "Nula";
-    strengthText.className = "status-weak";
-    crackTimeText.textContent = "Imediato";
+  // DOM elements
+  const calendarBody = document.getElementById("calendar-body");
+  const reservationForm = document.getElementById("reservation-form");
+  const pendingListElement = document.getElementById("pending-list-element");
+  const pendingCounter = document.getElementById("pending-counter");
+  const filterButtons = document.querySelectorAll(".filter-btn");
 
-    updateCheck(chkLength, false);
-    updateCheck(chkUpper, false);
-    updateCheck(chkLower, false);
-    updateCheck(chkNumber, false);
-    updateCheck(chkSpecial, false);
-  }
+  let activeFilter = "todos";
 
-  // --- Phishing Simulator ---
-  const suspectTargets = document.querySelectorAll(".suspect-target");
-  const analysisInstruction = document.getElementById("analysis-instruction");
-  const activeTipCard = document.getElementById("active-tip-card");
-  const tipTitle = document.getElementById("tip-title");
-  const tipDesc = document.getElementById("tip-desc");
-  const btnRevealAll = document.getElementById("btn-reveal-all");
+  // Days and shifts mappings
+  const days = [
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira"
+  ];
+  const shifts = ["Manhã", "Tarde", "Noite"];
 
-  suspectTargets.forEach(target => {
-    target.addEventListener("click", (e) => {
-      e.preventDefault();
-      
-      // Highlight selection
-      suspectTargets.forEach(t => t.classList.remove("active-highlight"));
-      target.classList.add("active-highlight");
-      
-      // Show description card
-      if (analysisInstruction) analysisInstruction.style.display = "none";
-      if (activeTipCard) activeTipCard.style.display = "block";
-      
-      const tipText = target.getAttribute("data-tip");
-      const cleanTitle = getCleanTitle(target);
-      
-      if (tipTitle) tipTitle.textContent = cleanTitle;
-      if (tipDesc) tipDesc.textContent = tipText;
+  // Initialize view
+  renderCalendar();
+  renderPendingList();
+  updateLiveWidgets();
+
+  // --- Filtering calendar ---
+  filterButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      activeFilter = btn.getAttribute("data-space");
+      renderCalendar();
     });
   });
 
-  function getCleanTitle(element) {
-    if (element.classList.contains("email-value")) {
-      if (element.textContent.includes("suporte@")) return "Remetente Falso";
-      return "Assunto Alarmista";
-    }
-    return "Link Externo Malicioso";
+  // --- Form submission ---
+  if (reservationForm) {
+    reservationForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const profName = document.getElementById("prof-name").value.trim();
+      const spaceSelect = document.getElementById("space-select").value;
+      const daySelect = document.getElementById("day-select").value;
+      const shiftSelect = document.getElementById("shift-select").value;
+      const bookingPurpose = document.getElementById("booking-purpose").value.trim();
+
+      if (!profName || !bookingPurpose) {
+        showToast("Por favor, preencha todos os campos do formulário.", true);
+        return;
+      }
+
+      // Check conflict with APPROVED reservations
+      const hasConflict = reservations.some(res => 
+        res.approved &&
+        res.space === spaceSelect &&
+        res.day === daySelect &&
+        res.shift === shiftSelect
+      );
+
+      if (hasConflict) {
+        showToast(`Conflito de Horário! O espaço "${spaceSelect}" já está reservado na ${daySelect} no turno da ${shiftSelect}.`, true);
+        return;
+      }
+
+      // Check conflict with PENDING reservations from the same teacher (prevent spamming same request)
+      const hasPendingConflict = reservations.some(res => 
+        !res.approved &&
+        res.space === spaceSelect &&
+        res.day === daySelect &&
+        res.shift === shiftSelect &&
+        res.prof.toLowerCase() === profName.toLowerCase()
+      );
+
+      if (hasPendingConflict) {
+        showToast("Você já enviou uma solicitação idêntica que está aguardando aprovação.", true);
+        return;
+      }
+
+      // Create booking request
+      const newRequest = {
+        id: "res-" + Date.now(),
+        space: spaceSelect,
+        prof: profName,
+        day: daySelect,
+        shift: shiftSelect,
+        purpose: bookingPurpose,
+        approved: false
+      };
+
+      reservations.push(newRequest);
+      renderPendingList();
+      showToast("Solicitação de reserva enviada para a coordenação!");
+      reservationForm.reset();
+    });
   }
 
-  if (btnRevealAll) {
-    btnRevealAll.addEventListener("click", () => {
-      suspectTargets.forEach(target => {
-        target.classList.add("revealed-danger");
+  // --- Render Calendar ---
+  function renderCalendar() {
+    if (!calendarBody) return;
+    calendarBody.innerHTML = "";
+
+    days.forEach(day => {
+      const row = document.createElement("tr");
+
+      // Day Column
+      const dayCell = document.createElement("td");
+      dayCell.textContent = day;
+      row.appendChild(dayCell);
+
+      // Shift Columns
+      shifts.forEach(shift => {
+        const shiftCell = document.createElement("td");
+
+        // Filter approved reservations for this day & shift
+        const matchingBookings = reservations.filter(res => 
+          res.approved &&
+          res.day === day &&
+          res.shift === shift &&
+          (activeFilter === "todos" || res.space === activeFilter)
+        );
+
+        if (matchingBookings.length > 0) {
+          matchingBookings.forEach(booking => {
+            const bookingDiv = document.createElement("div");
+            bookingDiv.className = "cell-reservation";
+            
+            // Format inside the cells
+            if (activeFilter === "todos") {
+              bookingDiv.innerHTML = `
+                <strong>${booking.space}</strong>
+                <span class="prof-tag">${booking.prof}</span>
+                <span class="purpose-tag">${booking.purpose}</span>
+              `;
+            } else {
+              bookingDiv.innerHTML = `
+                <span class="prof-tag">${booking.prof}</span>
+                <span class="purpose-tag">${booking.purpose}</span>
+              `;
+            }
+            shiftCell.appendChild(bookingDiv);
+          });
+        } else {
+          const freeDiv = document.createElement("div");
+          freeDiv.className = "cell-free";
+          freeDiv.textContent = "Disponível";
+          shiftCell.appendChild(freeDiv);
+        }
+
+        row.appendChild(shiftCell);
       });
-      
-      if (analysisInstruction) {
-        analysisInstruction.innerHTML = "🔍 <strong>3 Pontos Críticos Revelados!</strong> Desconfie sempre de links com senhas urgentes, remetentes estranhos e erros de escrita.";
-        analysisInstruction.style.display = "block";
-      }
-      if (activeTipCard) activeTipCard.style.display = "none";
+
+      calendarBody.appendChild(row);
     });
+  }
+
+  // --- Render Pending Approvals List ---
+  function renderPendingList() {
+    if (!pendingListElement || !pendingCounter) return;
+    
+    const pendingItems = reservations.filter(res => !res.approved);
+    pendingCounter.textContent = `${pendingItems.length} pendente(s)`;
+
+    if (pendingItems.length === 0) {
+      pendingListElement.innerHTML = `<li class="pending-placeholder">Nenhuma solicitação pendente no momento.</li>`;
+      return;
+    }
+
+    pendingListElement.innerHTML = "";
+    pendingItems.forEach(item => {
+      const li = document.createElement("li");
+      li.className = "pending-card";
+
+      li.innerHTML = `
+        <div class="pending-info">
+          <h4>${item.space}</h4>
+          <div class="pending-details">
+            <span>👤 ${item.prof}</span>
+            <span>📅 ${item.day}</span>
+            <span>🕒 Turno: ${item.shift}</span>
+          </div>
+          <p class="pending-purpose"><strong>Objetivo:</strong> ${item.purpose}</p>
+        </div>
+        <div class="pending-actions">
+          <button class="btn-approve" data-id="${item.id}">Aprovar</button>
+          <button class="btn-reject" data-id="${item.id}">Rejeitar</button>
+        </div>
+      `;
+
+      // Wire up buttons
+      li.querySelector(".btn-approve").addEventListener("click", () => approveRequest(item.id));
+      li.querySelector(".btn-reject").addEventListener("click", () => rejectRequest(item.id));
+
+      pendingListElement.appendChild(li);
+    });
+  }
+
+  // --- Actions ---
+  function approveRequest(id) {
+    const booking = reservations.find(res => res.id === id);
+    if (!booking) return;
+
+    // Double check conflict just in case (someone might have approved a conflict manually or timing issue)
+    const hasConflict = reservations.some(res => 
+      res.approved &&
+      res.space === booking.space &&
+      res.day === booking.day &&
+      res.shift === booking.shift
+    );
+
+    if (hasConflict) {
+      showToast(`Impossível aprovar! Esse horário já foi reservado e aprovado anteriormente por outro docente.`, true);
+      // Remove conflicts from pending if requested
+      return;
+    }
+
+    booking.approved = true;
+    renderCalendar();
+    renderPendingList();
+    updateLiveWidgets();
+    showToast(`Reserva do(a) ${booking.prof} para o ${booking.space} foi aprovada!`);
+  }
+
+  function rejectRequest(id) {
+    const index = reservations.findIndex(res => res.id === id);
+    if (index === -1) return;
+    
+    const booking = reservations[index];
+    reservations.splice(index, 1);
+    renderPendingList();
+    showToast(`Solicitação do(a) ${booking.prof} foi recusada.`, true);
+  }
+
+  // --- Update status list (widget in hero) ---
+  function updateLiveWidgets() {
+    // Determine status of environments right now (e.g. today's simulation. Let's make it reflect approved reservations)
+    // Redes Lab 1, Auditório, Quadra, Sala Multimídia
+    const environments = [
+      { name: "Lab 1 (Redes)", key: "Laboratório de Redes (Lab 1)" },
+      { name: "Auditório", key: "Auditório Principal" },
+      { name: "Quadra", key: "Quadra Poliesportiva" },
+      { name: "Lab 2 (Dev)", key: "Sala Multimídia" }
+    ];
+
+    const terminalContent = document.querySelector(".terminal-content");
+    if (!terminalContent) return;
+
+    terminalContent.innerHTML = "";
+    environments.forEach(env => {
+      // Check if there is ANY approved reservation today (let's say Monday is today, or check if it has any bookings overall)
+      const hasBooking = reservations.some(res => res.approved && res.space === env.key);
+      const badgeClass = hasBooking ? "reserved" : "free";
+      const statusText = hasBooking ? "Ocupado" : "Livre";
+
+      const line = document.createElement("p");
+      line.className = "term-line";
+      line.innerHTML = `
+        <span><span class="term-prompt">&bull;</span> ${env.name}:</span>
+        <span class="badge-tag-small ${badgeClass}">${statusText}</span>
+      `;
+      terminalContent.appendChild(line);
+    });
+  }
+
+  // --- Custom Toast Notification ---
+  function showToast(message, isError = false) {
+    // Remove existing toast if visible
+    const existingToast = document.querySelector(".toast");
+    if (existingToast) {
+      existingToast.remove();
+    }
+
+    const toast = document.createElement("div");
+    toast.className = `toast ${isError ? 'error' : ''}`;
+    toast.innerHTML = `
+      <span>${isError ? '⚠️' : '✅'}</span>
+      <span>${message}</span>
+    `;
+
+    document.body.appendChild(toast);
+
+    // Trigger reflow/animation
+    setTimeout(() => {
+      toast.classList.add("show");
+    }, 10);
+
+    // Hide after 3 seconds
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => {
+        toast.remove();
+      }, 300);
+    }, 3000);
   }
 });
